@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { ItemsList } from '../index';
 
 const defaultProps = {
@@ -26,5 +26,16 @@ describe('ItemsList', () => {
     const items = [{ id: 1, content: 'Test 1' }, { id: 2, content: 'Test 2' }];
     const renderedItem = shallow(<ItemsList {...defaultProps} items={items} />);
     expect(renderedItem.find('li')).toHaveLength(2);
+  });
+
+  it('should call onDelete with the according item id', () => {
+      const onDeleteMock = jest.fn();
+      const items = [{ id: 1, content: 'Test 1' }, { id: 2, content: 'Test 2' }];
+      const renderedItem = mount(
+          <ItemsList {...defaultProps} items={items} onDelete={onDeleteMock} />
+      );
+      renderedItem.find('li').at(1).find('button').simulate('click');
+      expect(onDeleteMock.mock.calls.length).toBe(1);
+      expect(onDeleteMock.mock.calls[0][0]).toBe(2);
   });
 });
