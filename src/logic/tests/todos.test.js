@@ -27,4 +27,19 @@ describe('reducer', () => {
     expect(result.items[2].id).toEqual(3);
     expect(result.items[2].content).toEqual('third');
   });
+
+  it('should delete an item on DELETE_ITEM', () => {
+    const state = {
+        items: [
+            { id: 1, content: 'first' },
+            { id: 2, content: 'second' },
+        ]
+    }
+    const mockAction = deleteItem(1);
+    const result = reducer(state, mockAction);
+    expect(result.items).toHaveLength(1);
+    expect(result.items[0].id).toEqual(2);
+    expect(result.items[0].content).toEqual('second');
+  });
+
 });
