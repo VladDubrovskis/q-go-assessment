@@ -1,4 +1,4 @@
-import reducer, { initialState, addItem } from '../todos';
+import reducer, { initialState, addItem, deleteItem } from '../todos';
 
 describe('reducer', () => {
   it('should return state for unknown action', () => {
