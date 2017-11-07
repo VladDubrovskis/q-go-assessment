@@ -39,11 +39,11 @@ describe('ItemsList', () => {
     expect(renderedItem.find('li')).toHaveLength(2);
 
     expect(renderedItem.find('li').at(0).find('button')).toHaveLength(1);
-    expect(renderedItem.find('li').at(0).find('s')).toHaveLength(0);
+    expect(renderedItem.find('li').at(0).find('del')).toHaveLength(0);
     expect(renderedItem.find('li').at(0).find('input[type="checkbox"]').props().checked).toEqual(false);
 
     expect(renderedItem.find('li').at(1).find('button')).toHaveLength(1);
-    expect(renderedItem.find('li').at(1).find('s')).toHaveLength(1);
+    expect(renderedItem.find('li').at(1).find('del')).toHaveLength(1);
     expect(renderedItem.find('li').at(1).find('input[type="checkbox"]').props().checked).toEqual(true);
   });
 
