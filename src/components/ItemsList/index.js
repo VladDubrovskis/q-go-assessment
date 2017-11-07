@@ -11,7 +11,10 @@ export const ItemsList = ({ items, onDelete }) => {
         {items.length < 1 && <p id="items-missing">Add some tasks above.</p>}
         {items.map(item =>
           <li key={item.id}>
-            {item.content}<button onClick={() => {onDelete(item.id)}}>Delete</button>
+            <label>
+              <input type="checkbox"></input>{item.content}
+            </label>
+            <button onClick={() => {onDelete(item.id)}}>Delete</button>
           </li>
         )}
       </ul>
