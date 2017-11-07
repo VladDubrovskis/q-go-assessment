@@ -46,6 +46,17 @@ describe('ItemsList', () => {
     expect(renderedItem.find('li').at(1).find('input[type="checkbox"]').props().checked).toEqual(true);
   });
 
+  it('should call onToggle with the according item id when label is clicked', () => {
+    const onToggleMock = jest.fn();
+    const items = [{ id: 1, content: 'Test 1', complete: true }, { id: 2, content: 'Test 2', complete: false }];
+    const renderedItem = mount(
+      <ItemsList {...defaultProps} items={items} onToggle={onToggleMock} />
+    );
+    renderedItem.find('li').at(1).find('label').simulate('click');
+    expect(onToggleMock.mock.calls.length).toBe(1);
+    expect(onToggleMock.mock.calls[0][0]).toBe(2);
+  });
+
   it('should call onDelete with the according item id when delete button is clicked', () => {
       const onDeleteMock = jest.fn();
       const items = [{ id: 1, content: 'Test 1' }, { id: 2, content: 'Test 2' }];
