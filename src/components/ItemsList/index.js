@@ -12,7 +12,8 @@ export const ItemsList = ({ items, onDelete }) => {
         {items.map(item =>
           <li key={item.id}>
             <label>
-              <input type="checkbox"></input>{item.content}
+              <input type="checkbox" checked={item.complete}></input>
+              { item.complete ? <s>{item.content}</s> : item.content }
             </label>
             <button onClick={() => {onDelete(item.id)}}>Delete</button>
           </li>
