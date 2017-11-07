@@ -17,8 +17,8 @@ describe('reducer', () => {
   it('should add new items on ADD_ITEM', () => {
     const state = {
       items: [
-        { id: 1, content: 'first' },
-        { id: 2, content: 'second' },
+        { id: 1, content: 'first', complete: false },
+        { id: 2, content: 'second', complete: false },
       ]
     }
     const mockAction = addItem('third');
@@ -26,6 +26,7 @@ describe('reducer', () => {
     expect(result.items).toHaveLength(3);
     expect(result.items[2].id).toEqual(3);
     expect(result.items[2].content).toEqual('third');
+    expect(result.items[2].complete).toEqual(false);
   });
 
   it('should delete an item on DELETE_ITEM', () => {
