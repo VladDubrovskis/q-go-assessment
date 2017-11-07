@@ -13,7 +13,7 @@ export const ItemsList = ({ items, onDelete, onToggle }) => {
           <li key={item.id}>
             <label htmlFor={`task-${item.id}`}>
               <input id={`task-${item.id}`} type="checkbox" checked={item.complete} onChange={() => {onToggle(item.id)}}></input>
-              { item.complete ? <s>{item.content}</s> : item.content }
+              { item.complete ? <del>{item.content}</del> : item.content }
             </label>
             <button onClick={() => {onDelete(item.id)}}>Delete</button>
           </li>
