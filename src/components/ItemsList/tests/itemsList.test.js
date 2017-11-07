@@ -23,10 +23,11 @@ describe('ItemsList', () => {
     expect(renderedItem.find('#items-missing')).toHaveLength(0);
   });
 
-  it('should render items as list items', () => {
+  it('should render items as list items with button', () => {
     const items = [{ id: 1, content: 'Test 1' }, { id: 2, content: 'Test 2' }];
     const renderedItem = shallow(<ItemsList {...defaultProps} items={items} />);
     expect(renderedItem.find('li')).toHaveLength(2);
+    expect(renderedItem.find('li').at(1).find('button')).toHaveLength(1);
   });
 
   it('should call onDelete with the according item id', () => {
