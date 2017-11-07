@@ -4,7 +4,8 @@ import { ItemsList } from '../index';
 
 const defaultProps = {
   items: [],
-  onDelete: f => f
+  onDelete: f => f,
+  onToggle: f => f
 };
 
 describe('ItemsList', () => {
@@ -52,7 +53,7 @@ describe('ItemsList', () => {
     const renderedItem = mount(
       <ItemsList {...defaultProps} items={items} onToggle={onToggleMock} />
     );
-    renderedItem.find('li').at(1).find('label').simulate('click');
+    renderedItem.find('li').at(1).find('input[type="checkbox"]').simulate('change');
     expect(onToggleMock.mock.calls.length).toBe(1);
     expect(onToggleMock.mock.calls[0][0]).toBe(2);
   });
