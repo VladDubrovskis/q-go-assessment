@@ -1,6 +1,6 @@
 import reducer, { initialState, addItem, deleteItem, toggleItem } from '../todos';
 
-describe('reducer', () => {
+describe('todos reducer', () => {
   it('should return state for unknown action', () => {
     const mockState = { test: 'testItem' };
     const mockAction = { type: 'mystery-meat' };
