@@ -25,6 +25,7 @@ const reducer = (state = initialState, action) => {
       const newItem = {
         id: nextId,
         content: action.content,
+        complete: false
       };
 
       return {
