@@ -11,9 +11,9 @@ export const deleteItem = id => {
 
 export const initialState = {
   items: [
-    { id: 1, content: 'Call mum' },
-    { id: 2, content: 'Buy cat food' },
-    { id: 3, content: 'Water the plants' },
+    { id: 1, content: 'Call mum', complete: false },
+    { id: 2, content: 'Buy cat food', complete: false },
+    { id: 3, content: 'Water the plants', complete: false },
   ],
 };
 
