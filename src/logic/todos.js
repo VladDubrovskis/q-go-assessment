@@ -1,5 +1,6 @@
 export const ADD_ITEM = 'qgo/assessment/ADD_ITEM';
 export const DELETE_ITEM = 'qgo/assessment/DELETE_ITEM';
+export const TOGGLE_ITEM = 'qgo/assessment/TOGGLE_ITEM';
 
 export const addItem = content => {
   return { type: ADD_ITEM, content };
@@ -8,6 +9,11 @@ export const addItem = content => {
 export const deleteItem = id => {
     return { type: DELETE_ITEM, id };
 };
+
+export const toggleItem = id => {
+  return { type: TOGGLE_ITEM, id };
+};
+
 
 export const initialState = {
   items: [
@@ -36,6 +42,18 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         items: [...state.items.filter((item) => item.id !== action.id)],
+      };
+    case TOGGLE_ITEM:
+      return {
+        ...state,
+        items: [...state.items.map((item) => {
+          if(item.id === action.id) {
+            return Object.assign({}, item, {
+              complete: item.complete ? false : true
+            })
+          }
+          return item;
+        })]
       };
     default:
       return state;
