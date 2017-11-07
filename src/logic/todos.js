@@ -49,7 +49,7 @@ const reducer = (state = initialState, action) => {
         items: [...state.items.map((item) => {
           if(item.id === action.id) {
             return Object.assign({}, item, {
-              complete: item.complete ? false : true
+              complete: !item.complete
             })
           }
           return item;
