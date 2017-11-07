@@ -32,7 +32,7 @@ describe('ItemsList', () => {
     expect(renderedItem.find('li').at(1).find('input[type="checkbox"]')).toHaveLength(1);
   });
 
-  it('should call onDelete with the according item id', () => {
+  it('should call onDelete with the according item id when delete button is clicked', () => {
       const onDeleteMock = jest.fn();
       const items = [{ id: 1, content: 'Test 1' }, { id: 2, content: 'Test 2' }];
       const renderedItem = mount(
