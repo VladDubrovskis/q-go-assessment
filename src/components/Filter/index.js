@@ -1,10 +1,10 @@
 import React from 'react';
 import './styles.css';
 
-const Filter = ({ onFilterToggle }) => {
+const Filter = ({ onFilterToggle, filter }) => {
   return (
     <div className="filter-toggle">
-      <button onClick={() => onFilterToggle()}>Toggle done items</button>
+      <button onClick={() => onFilterToggle()}>{filter ? 'Show all' : 'Hide complete'}</button>
     </div>
   );
 };
