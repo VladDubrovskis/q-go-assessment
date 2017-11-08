@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Filter from '../index';
+import Filter, { mapStateToProps } from '../index';
 
 const defaultProps = {
   onFilterToggle: f => f,
@@ -33,6 +33,16 @@ describe('Filter', () => {
       <Filter {...defaultProps} hideComplete={true} />
     );
     expect(renderedItem.find('button').props().children).toContain('Show all')
+  });
+
+  it('mapStateToProps should return the property from state', () => {
+    const state = {
+      hideComplete: true
+    };
+
+    expect(mapStateToProps(state)).toEqual({
+      hideComplete: state.hideComplete
+    });
   });
 
 

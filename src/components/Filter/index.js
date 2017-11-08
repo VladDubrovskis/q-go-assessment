@@ -9,4 +9,6 @@ const Filter = ({ onFilterToggle, hideComplete }) => {
   );
 };
 
+export const mapStateToProps = () => {};
+
 export default Filter;
