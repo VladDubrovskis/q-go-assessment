@@ -1,9 +1,11 @@
 jest.mock('../../../logic/todos');
+jest.mock('../../../logic/todoFilter');
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { ItemsList, mapDispatchToProps, mapStateToProps } from '../index';
 import { deleteItem, toggleItem } from '../../../logic/todos';
+import todoFilter from '../../../logic/todoFilter';
 
 const defaultProps = {
   items: [],
@@ -91,8 +93,12 @@ describe('ItemsList', () => {
     const state = {
       todos: {
         items: [1, 2, 3]
-      }
+      },
+      hideComplete: true
     };
+
+    todoFilter.mockReturnValue(state.todos.items);
+    expect(todoFilter).toHaveBeenCalledWith(state.todos.items, state.hideComplete);
     expect(mapStateToProps(state)).toEqual({
       items: state.todos.items
     });
