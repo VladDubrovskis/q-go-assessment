@@ -1,13 +1,20 @@
 import React from 'react';
 import './styles.css';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { toggleFilter } from '../../logic/todosFilterState';
 
-const Filter = ({ onFilterToggle, hideComplete }) => {
+export const Filter = ({ onFilterToggle, hideComplete }) => {
   return (
     <div className="filter-toggle">
       <button onClick={() => onFilterToggle()}>{hideComplete ? 'Show all' : 'Hide complete'}</button>
     </div>
   );
+};
+
+Filter.propTypes = {
+  onFilterToggle: PropTypes.func.isRequired,
+  hideComplete: PropTypes.bool.isRequired
 };
 
 export const mapStateToProps = state => ({
@@ -18,4 +25,4 @@ export const mapDispatchToProps = dispatch => ({
   onFilterToggle: () => dispatch(toggleFilter())
 });
 
-export default Filter;
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

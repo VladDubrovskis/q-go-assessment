@@ -2,7 +2,7 @@ jest.mock('../../../logic/todosFilterState');
 
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Filter, { mapStateToProps, mapDispatchToProps } from '../index';
+import { Filter, mapStateToProps, mapDispatchToProps } from '../index';
 import { toggleFilter } from '../../../logic/todosFilterState';
 
 const defaultProps = {
