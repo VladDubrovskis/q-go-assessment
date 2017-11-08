@@ -1,4 +1,4 @@
-import todoFilter, { FILTER_SHOW_PENDING } from '../todoFilter';
+import todoFilter from '../todoFilter';
 
 const testData = [
   { id: 1, content: 'first', complete: false },
@@ -10,6 +10,6 @@ describe('todos filter', () => {
   });
 
   it('should return incomplete tasks for FILTER_SHOW_PENDING', () => {
-    expect(todoFilter(testData, FILTER_SHOW_PENDING)).toEqual([testData[0]]);
+    expect(todoFilter(testData, true)).toEqual([testData[0]]);
   });
 });
