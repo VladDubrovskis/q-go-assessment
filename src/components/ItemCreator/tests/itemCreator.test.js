@@ -1,6 +1,9 @@
+jest.mock('../../../logic/todos');
+
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { ItemCreator } from '../index';
+import { ItemCreator, mapDispatchToProps } from '../index';
+import { addItem } from '../../../logic/todos';
 
 const defaultProps = {
   onAdd: f => f,
@@ -27,5 +30,15 @@ describe('ItemCreator', () => {
     renderedItem.find('.itemCreator-input').node.value = 'New Test Item';
     renderedItem.find('.itemCreator-button').simulate('click');
     expect(renderedItem.find('.itemCreator-input').node.value).toEqual('');
+  });
+
+  it('mapDispatchToProps should return the expected actions', () => {
+    const dispatchMock = jest.fn();
+    const result = mapDispatchToProps(dispatchMock);
+
+    const addTest = 'addTest';
+    result.onAdd(addTest);
+    expect(addItem).toHaveBeenCalledWith(addTest);
+    expect(dispatchMock).toHaveBeenCalledTimes(1);
   });
 });

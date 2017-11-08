@@ -29,11 +29,11 @@ ItemsList.propTypes = {
   onToggle: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return { items: state.todos.items };
 };
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   onDelete: id => dispatch(deleteItem(id)),
   onToggle: id => dispatch(toggleItem(id)),
 });

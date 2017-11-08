@@ -34,7 +34,7 @@ ItemCreator.propTypes = {
   onAdd: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   onAdd: newItem => dispatch(addItem(newItem)),
 });
 

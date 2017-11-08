@@ -1,6 +1,9 @@
+jest.mock('../../../logic/todos');
+
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import { ItemsList } from '../index';
+import { ItemsList, mapDispatchToProps, mapStateToProps } from '../index';
+import { deleteItem, toggleItem } from '../../../logic/todos';
 
 const defaultProps = {
   items: [],
@@ -67,5 +70,31 @@ describe('ItemsList', () => {
       renderedItem.find('li').at(1).find('button').simulate('click');
       expect(onDeleteMock.mock.calls.length).toBe(1);
       expect(onDeleteMock.mock.calls[0][0]).toBe(2);
+  });
+
+  it('mapDispatchToProps should return the expected actions', () => {
+    const dispatchMock = jest.fn();
+    const result = mapDispatchToProps(dispatchMock);
+
+    const deleteTest = 'deleteTest';
+    result.onDelete(deleteTest);
+    expect(deleteItem).toHaveBeenCalledWith(deleteTest);
+    expect(dispatchMock).toHaveBeenCalledTimes(1);
+
+    const toggleTest = 'toggleTest';
+    result.onToggle(toggleTest);
+    expect(toggleItem).toHaveBeenCalledWith(toggleTest);
+    expect(dispatchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('mapStateToProps should return the properties from state', () => {
+    const state = {
+      todos: {
+        items: [1, 2, 3]
+      }
+    };
+    expect(mapStateToProps(state)).toEqual({
+      items: state.todos.items
+    });
   });
 });
