@@ -1,4 +1,4 @@
-import reducer, { initialState, setFilter } from '../todosFilterState';
+import reducer, { initialState, toggleFilter } from '../todosFilterState';
 
 describe('todos filter reducer', () => {
   it('should use initial state if state not provided', () => {
@@ -7,11 +7,10 @@ describe('todos filter reducer', () => {
     expect(result).toEqual(initialState);
   });
 
-  it('should set the filter for SET_FILTER', () => {
-    const state = 'DEFAULT';
-    const filterName = 'DONE';
-    const mockAction = setFilter(filterName);
+  it('should set the filter for TOGGLE_FILTER', () => {
+    const state = true;
+    const mockAction = toggleFilter();
     const result = reducer(state, mockAction);
-    expect(result).toEqual(filterName);
+    expect(result).toEqual(false);
   });
 });
