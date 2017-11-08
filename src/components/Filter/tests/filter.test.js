@@ -4,6 +4,7 @@ import Filter from '../index';
 
 const defaultProps = {
   onFilterToggle: f => f,
+  filter: false
 };
 
 describe('Filter', () => {
@@ -18,5 +19,19 @@ describe('Filter', () => {
     );
     renderedItem.find('button').simulate('click');
     expect(onFilterToggleMock.mock.calls.length).toBe(1);
+  });
+
+  it('button should say hide complete when filter is false', () => {
+    const renderedItem = mount(
+      <Filter {...defaultProps} filter={false} />
+    );
+    expect(renderedItem.find('button').props().children).toContain('Hide complete')
+  });
+
+  it('button should say show all when filter is true', () => {
+    const renderedItem = mount(
+      <Filter {...defaultProps} filter={true} />
+    );
+    expect(renderedItem.find('button').props().children).toContain('Show all')
   });
 });
