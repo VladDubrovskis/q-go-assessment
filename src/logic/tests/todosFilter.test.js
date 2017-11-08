@@ -7,7 +7,7 @@ describe('todos filter reducer', () => {
     expect(result).toEqual(initialState);
   });
 
-  it('should use initial state if state not provided', () => {
+  it('should set the filter for SET_FILTER', () => {
     const state = 'DEFAULT';
     const filterName = 'DONE';
     const mockAction = setFilter(filterName);
