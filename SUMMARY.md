@@ -17,3 +17,5 @@ If you go through commit messages you should be able to follow my thinking and a
 - [ ] Possibly split out containers and components - e.g. dumb ones and containing some logic
 - [ ] Make it look better :)
 - [ ] Some things could have been named a little better - some of it is mostly cause everything is in one `logic` folder. If was split a little more would make more sense
+- [ ] Add some sort of persistence layer - if api probably would need to introduce redux-thunk for async actions. The easiest way would be to use local browser storage so on concurrent visit user could actually see the list of their items
+- [ ] A stretch goal after persistence layer would be Service Worker and manifest for offline access? Too far ? :D 
