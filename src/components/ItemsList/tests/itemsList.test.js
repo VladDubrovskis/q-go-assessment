@@ -98,9 +98,9 @@ describe('ItemsList', () => {
     };
 
     todoFilter.mockReturnValue(state.todos.items);
-    expect(todoFilter).toHaveBeenCalledWith(state.todos.items, state.hideComplete);
     expect(mapStateToProps(state)).toEqual({
       items: state.todos.items
     });
+    expect(todoFilter).toHaveBeenCalledWith(state.todos.items, state.hideComplete);
   });
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteItem, toggleItem } from '../../logic/todos';
+import todoFilter from '../../logic/todoFilter';
 import './styles.css';
 
 export const ItemsList = ({ items, onDelete, onToggle }) => {
@@ -30,7 +31,7 @@ ItemsList.propTypes = {
 };
 
 export const mapStateToProps = state => {
-  return { items: state.todos.items };
+  return { items: todoFilter(state.todos.items, state.hideComplete) };
 };
 
 export const mapDispatchToProps = dispatch => ({
