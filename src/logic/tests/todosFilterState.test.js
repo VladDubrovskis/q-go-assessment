@@ -1,4 +1,4 @@
-import reducer, { initialState, setFilter } from '../todosFilter';
+import reducer, { initialState, setFilter } from '../todosFilterState';
 
 describe('todos filter reducer', () => {
   it('should use initial state if state not provided', () => {
