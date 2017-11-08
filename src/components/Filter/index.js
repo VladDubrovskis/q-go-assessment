@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import { toggleFilter } from '../../logic/todosFilterState';
 
 const Filter = ({ onFilterToggle, hideComplete }) => {
   return (
@@ -13,6 +14,8 @@ export const mapStateToProps = state => ({
   hideComplete: state.hideComplete
 });
 
-export const mapDispatchToProps = () => {}
+export const mapDispatchToProps = dispatch => ({
+  onFilterToggle: () => dispatch(toggleFilter())
+});
 
 export default Filter;
