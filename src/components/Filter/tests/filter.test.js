@@ -1,6 +1,9 @@
+jest.mock('../../../logic/todosFilterState');
+
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Filter, { mapStateToProps } from '../index';
+import Filter, { mapStateToProps, mapDispatchToProps } from '../index';
+import { toggleFilter } from '../../../logic/todosFilterState';
 
 const defaultProps = {
   onFilterToggle: f => f,
@@ -43,6 +46,14 @@ describe('Filter', () => {
     expect(mapStateToProps(state)).toEqual({
       hideComplete: state.hideComplete
     });
+  });
+
+  it('mapDispatchToProps should return the property from state', () => {
+    const dispatchMock = jest.fn();
+    const result = mapDispatchToProps(dispatchMock);
+    result.onFilterToggle();
+    expect(toggleFilter).toHaveBeenCalledTimes(1);
+    expect(dispatchMock).toHaveBeenCalledTimes(1);
   });
 
 

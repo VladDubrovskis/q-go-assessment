@@ -13,4 +13,6 @@ export const mapStateToProps = state => ({
   hideComplete: state.hideComplete
 });
 
+export const mapDispatchToProps = () => {}
+
 export default Filter;
