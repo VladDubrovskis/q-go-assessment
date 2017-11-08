@@ -4,7 +4,7 @@ import Filter from '../index';
 
 const defaultProps = {
   onFilterToggle: f => f,
-  filter: false
+  hideComplete: false
 };
 
 describe('Filter', () => {
@@ -21,17 +21,19 @@ describe('Filter', () => {
     expect(onFilterToggleMock.mock.calls.length).toBe(1);
   });
 
-  it('button should say hide complete when filter is false', () => {
+  it('button should say hide complete when hideComplete is false', () => {
     const renderedItem = mount(
-      <Filter {...defaultProps} filter={false} />
+      <Filter {...defaultProps} hideComplete={false} />
     );
     expect(renderedItem.find('button').props().children).toContain('Hide complete')
   });
 
-  it('button should say show all when filter is true', () => {
+  it('button should say show all when hideComplete is true', () => {
     const renderedItem = mount(
-      <Filter {...defaultProps} filter={true} />
+      <Filter {...defaultProps} hideComplete={true} />
     );
     expect(renderedItem.find('button').props().children).toContain('Show all')
   });
+
+
 });
