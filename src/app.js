@@ -4,6 +4,7 @@ import configureStore from './redux/store';
 import Header from './components/Header';
 import ItemCreator from './components/ItemCreator';
 import ItemsList from './components/ItemsList';
+import Filter from './components/Filter';
 import './app.css';
 
 const store = configureStore();
@@ -16,6 +17,7 @@ class App extends Component {
           <Header />
           <div>
             <ItemCreator />
+            <Filter />
             <ItemsList />
           </div>
         </div>
